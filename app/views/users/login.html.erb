@@ -1,0 +1,13 @@
+<%= form_tag({controller:'users',action:'clogin'}, method: "post") do %>
+  <%= label_tag(:q, "昵称") %>
+  <%= text_field_tag(:name,) %>
+  <br><br>
+  <%= label_tag(:q, "密码") %>
+  <input type="password" name="key_word" />
+  <br>
+  <% if notice %>
+  <%= label_tag(:q, notice) %>
+  <%end %>
+  <br>
+  <%= submit_tag("快速登录") %>
+<% end %>

@@ -1,0 +1,57 @@
+<table >
+ <tbody>
+    <% length=@phones.length %>
+    <% indexs=(0...length).to_a %>
+    <% for i in indexs do %>
+      <% if i%4==0 %>
+        <% if i!=0 %>
+          </tr>
+        <% end %>
+        <tr>
+        <td class='tbox'>
+            <div class='box'>
+            <%=link_to image_tag(@phones[i].avatar_url(:large)),phone_path(@phones[i])%>
+             <%if @phones[i].intro.length<16%>
+	         <%=@phones[i].intro %>
+	         <%else%>
+	         <%=@phones[i].intro[0...16]+'...'%>
+	         <%end%>
+	         <div>
+	        <%= @phones[i].price %>
+            </div>
+            <div>
+            <%=link_to '编辑',edit_phone_path(@phones[i])%>
+            <%= link_to("移除", phone_path(@phones[i].id), method: :delete, data: { confirm: "确定移除?"}) %>
+            </div>
+            </div>
+        </td>
+      <% else %>
+        <td class='tbox'>
+            <div class='box'>
+            <%=link_to image_tag(@phones[i].avatar_url(:large)),phone_path(@phones[i])%>
+             <%if @phones[i].intro.length<16%>
+	         <%=@phones[i].intro %>
+	         <%else%>
+	         <%=@phones[i].intro[0...16]+'...'%>
+	         <%end%>
+	         <div>
+	        <%= @phones[i].price %>
+            </div>
+            <div>
+            <%=link_to '编辑',edit_phone_path(@phones[i])%>
+            <%= link_to("移除", phone_path(@phones[i].id), method: :delete, data: { confirm: "确定移除?"}) %>
+
+            </div>
+            </div>
+        </td>
+      <% end %>
+    <% end %>
+
+    
+  </tbody>
+</table>
+
+<br>
+<br>
+<br>
+

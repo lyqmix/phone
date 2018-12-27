@@ -1,0 +1,62 @@
+
+<p>
+<%= form_for(@phone,{:controller=>:phones,:action=>:index,:method=>:get}) do |f| %>
+<label>选择手机品牌：<label>
+<%= f.select :brand,options_for_select(Phone::PHONE_TYPES,if not @brand.empty? then selected=@brand end),{include_blank:true}%>
+&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp 
+<label>选择手机价格：<label>
+<%= f.select :price,options_for_select(Phone::PHONE_PRICES,if not @price.empty? then selected=@price end),{include_blank:true}%>
+&nbsp&nbsp&nbsp
+<%= f.submit '筛选'%>
+<% end %>
+<p>
+
+<table >
+ <tbody>
+    <% length=@phones.length %>
+    <% indexs=(0...length).to_a %>
+    <% for i in indexs do %>
+      <% if i%4==0 %>
+        <% if i!=0 %>
+          </tr>
+        <% end %>
+        <tr>
+        <td class='tbox'>
+            <div class='box'>
+            <%=link_to image_tag(@phones[i].avatar_url(:large)),phone_path(@phones[i])%>
+             <%if @phones[i].intro.length<16%>
+	         <%=@phones[i].intro %>
+	         <%else%>
+	         <%=@phones[i].intro[0...16]+'...'%>
+	         <%end%>
+	         <div>
+	        <%= @phones[i].price %>
+
+            </div></div>
+        </td>
+      <% else %>
+        <td class='tbox'>
+            <div class='box'>
+            <%=link_to image_tag(@phones[i].avatar_url(:large)),phone_path(@phones[i])%>
+             <%if @phones[i].intro.length<16%>
+	         <%=@phones[i].intro %>
+	         <%else%>
+	         <%=@phones[i].intro[0...16]+'...'%>
+	         <%end%>
+	         <div>
+	        <%= @phones[i].price %>
+            </div></div>
+        </td>
+      <% end %>
+    <% end %>
+
+    
+  </tbody>
+</table>
+<br>
+<br>
+<br>
+
+
+
+

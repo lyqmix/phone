@@ -1,0 +1,36 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>手机名称:</strong>
+  <%= @phone.name %>
+</p>
+
+<p>
+  <strong>手机品牌:</strong>
+  <%= @phone.brand %>
+</p>
+
+<p>
+  <strong>手机描述:</strong>
+  <%= @phone.intro %>
+</p>
+
+<p>
+  <strong>手机价格:</strong>
+  <%= @phone.price %>
+</p>
+
+<p>
+  <strong>手机图片:</strong>
+  <%= image_tag(@phone.avatar_url(:large)) if @phone.avatar %>
+</p>
+
+<%if session[:userid]==@phone.user_id %>
+<%= link_to '修改手机信息', edit_phone_path(@phone) %>
+<%else%>
+<%if session[:user] %>
+<%= button_to '加入购物车', items_path(id:@phone.id) %>
+<%else%>
+<%=link_to "您还未登录,点我快速登录",{controller:"users",action:"login"}%>
+<%end%>
+<%end%>

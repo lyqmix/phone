@@ -1,0 +1,21 @@
+<% if @phones and  not @phones.empty? %>
+<table>
+<%for phone in @phones do%>
+<tr>
+    <td class='tbox'><%=phone.name%><td>
+    <td class='tbox'><%=phone.brand%><td>
+    <td class='tbox2'><%=phone.intro%><td>
+    <td class='tbox'><%=phone.price%><td>
+    <td class='tbox'><%=image_tag(phone.avatar_url(:small))%><td>
+    <td class='tbox'><%= link_to("移除", cart_path(phone.id), method: :delete, data: { confirm: "确定移除?"}) %></td>
+
+</tr>
+<%end%>
+</table>
+<p><%= button_to "付款",new_order_path,:method=>:get%><p>
+<br>
+<br>
+<br>
+<% else %>
+<p>您还没有购物<p>
+<% end %>

@@ -1,0 +1,22 @@
+
+<h1>我的订单</h1>
+
+<table>
+
+  <tbody>
+    <%i=1%>
+    <% @orders.each do |order| %>
+      <tr>
+        <td class='tbox'><%= i %></td>
+        <td class='tbox'><%= order.name %></td>
+        <td class='tbox'><%= order.address %></td>
+        <td class='tbox'><%= order.email %></td>
+        <td class='tbox'><%= order.pay_type %></td>
+        <td class='tbox'><%= link_to '查看订单详情', order %></td>
+      </tr>
+      <%i=i+1%>
+    <% end %>
+  </tbody>
+</table>
+
+<br>

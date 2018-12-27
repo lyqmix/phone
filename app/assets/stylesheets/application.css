@@ -1,0 +1,133 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+html,body {
+    width: 100%;
+    height: 100%;
+    font-family: "Microsoft Yahei", "SimSun", Arial;
+    font-size:12px;
+    overflow:hidden;
+}
+body,h3,ul,li {
+    margin: 0;
+    padding: 0;
+}
+h3,th{
+    font-weight:normal;
+}
+.ul,ul li {
+    list-style-type: none;
+}
+a{
+    text-decoration: none;
+}
+
+.header {
+    width: 100%;
+    height: 50px;
+    position: absolute;
+    top: 0;
+    /*以上设置是重点必须的*/
+    line-height: 50px;
+}
+
+.header h3 {
+    margin-left: 12px;
+    color: #0075C7;
+}
+
+.mainBox {
+    width: 100%;
+    position: absolute;
+    top: 50px;
+    bottom: 0;
+    /*以上设置是重点必须的*/
+}
+
+.mainBox .leftBox {
+    height: 100%;
+    width: 240px;
+    float: left;
+    overflow: auto;
+    /*以上设置是重点必须的*/
+    background: #f8f8ee;
+    font-size: 12px;
+    font-family: "Microsoft Yahei", "SimSun", Arial;
+    border-right: 1px solid #D9D9D9;
+    border-top: 1px solid #D9D9D9;
+}
+
+.menuItem a,.menuItem a:visited {
+    padding-left: 20px;
+    width: 220px;
+    height: 32px;
+    background-color: #f8f8f8;
+    border-bottom: solid 1px #EAEAEA;
+    border-top: solid 1px #FFFFFF;
+    display: block;
+    line-height: 32px;
+    color: #000000;
+}
+
+.menuItem a:hover,.menuItem a:active {
+    background: #f2f2f2;
+    color: #0075c7;
+}
+
+.menuItem img {
+    width: 18px;
+    height: 18px;
+    vertical-align: middle;
+    margin-right: 10px;
+}
+
+.mainBox .rightBox {
+    height: 100%;
+    margin-left: 241px;
+    /*以上设置是重点必须的*/
+    padding-right: 1px;
+    padding-left: 20px;
+    padding-top: 20px;
+    border-left: 1px solid #E6E6E6;
+    border-top: 1px solid #D9D9D9;
+    overflow: auto;
+}
+
+.slideBtn {
+    cursor: pointer;
+    width: 1em;
+    position: absolute;
+    top: 40%;
+    left: 1;
+    display: block;
+}
+
+div.box {
+	width: 240px;
+}
+
+td.tbox {
+    padding:10px;
+    margin:10px;
+}
+
+td.tbox2 {
+    padding:10px;
+    margin:10px;
+    width: 400px
+}
+
+
+

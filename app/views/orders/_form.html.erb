@@ -1,0 +1,30 @@
+<%= form_for(@order) do |f| %>
+
+  <div class="field">
+    <%= f.label :收件人 %><br>
+    <%= f.text_field :name %>
+    <label><%=@order.errors[:name][0] if not @order.errors[:name].empty? %></label>
+
+  </div>
+  <div class="field">
+    <%= f.label :地址 %><br>
+    <%= f.text_field :address %>
+    <label><%=@order.errors[:address][0] if not @order.errors[:address].empty? %></label>
+
+  </div>
+  <div class="field">
+    <%= f.label :邮箱 %><br>
+    <%= f.email_field :email %>
+    <label><%=@order.errors[:email][0] if not @order.errors[:email].empty? %></label>
+
+  </div>
+  <div class="field">
+    <%= f.label :支付方式 %><br>
+    <%= f.select :pay_type,Order::PAYMENT_TYPES,:prompt=>"请选择支付方式" %>
+    <label><%=@order.errors[:pay_type][0] if not @order.errors[:pay_type].empty? %></label>
+
+  </div>
+  <div class="actions">
+    <%= f.submit  "确定支付"%>
+  </div>
+<% end %>

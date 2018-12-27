@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Workspace</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+    <div class="header">
+        <h3>
+            二手手机交易平台
+        </h3>
+    </div>
+    <div class="mainBox">
+        <div class="leftBox">
+            <div class="menuItem zzjg">
+                <%=link_to("我要买手机",phones_path)%>
+            </div>
+            <div class="menuItem ygfc">
+                 <%=link_to("我要卖手机",new_phone_path)%>
+            </div>
+            <% if session[:user]%>
+            <div class="menuItem wghf">
+                 <% if session[:cart_id] %>
+                 <%=link_to("我的购物车",cart_path(session[:cart_id]))%>
+                 <% else %>
+                 <%=link_to("我的购物车",cart_path(1))%>
+                 <% end %>
+            </div>
+            <div class="menuItem xxyd">
+                 <%=link_to(session[:user],edit_user_path(session[:userid]))%>
+            </div>
+            <div class="menuItem tzgg">
+                 <%=link_to("注销账户",{controller:'users',action:'logout'},data: { confirm: '确定注销?' })%>
+            </div>
+            <% else %>
+            <div class="menuItem xxyd">
+                 <%=link_to("登录账户",{controller:'users',action:'login'})%>
+            </div>
+            <div class="menuItem tzgg">
+                 <%=link_to("免费注册",new_user_path)%>
+            </div>
+            <% end %>
+            <div class="menuItem xwzx">
+                 <%=link_to("平台信息",{controller:'users',action:'info'})%>
+            </div>
+        </div>
+        <div class="rightBox">
+            <%=yield%>
+        </div>
+    </div>
+</body>
+</html>

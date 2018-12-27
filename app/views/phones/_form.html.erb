@@ -1,0 +1,36 @@
+<%= form_for(@phone) do |f| %>
+
+  <div class="field">
+    <%= f.label :手机名称 %><br>
+    <%= f.text_field :name %>
+    <label><%=@phone.errors[:name][0] if not @phone.errors[:name].empty? %></label>
+  </div>
+  <div class="field">
+    <%= f.label :手机品牌 %><br>
+    <%= f.select :brand,options_for_select(Phone::PHONE_TYPES),{include_blank: true} %>
+    <label><%=@phone.errors[:brand][0] if not @phone.errors[:brand].empty? %></label>
+  </div>
+  <div class="field">
+    <%= f.label :手机描述 %><br>
+    <%= f.text_area :intro,:size=>'30*20'%>
+    <label><%=@phone.errors[:intro][0] if not @phone.errors[:intro].empty? %></label>
+  </div>
+  <div class="field">
+    <%= f.label :手机价格 %><br>
+    <%= f.text_field :price %>
+    <label><%=@phone.errors[:price][0] if not @phone.errors[:price].empty? %></label>
+  </div>
+  <div class="field">
+    <%= f.label :手机图片 %><br>
+    <%= f.file_field :avatar %>
+    <%= f.hidden_field :avatar_cache %>
+    <label><%=@phone.errors[:avatar][0] if not @phone.errors[:avatar].empty? %></label>
+  </div>
+  <div class="actions">
+    <%if @phone.id %>
+    <%= f.submit name='确定修改' %>
+    <%else%>
+    <%= f.submit name='确定发布' %>
+    <%end%>
+  </div>
+<% end %>

@@ -1,0 +1,62 @@
+<table >
+ <tbody>
+    <% length=@phones.length %>
+    <% indexs=(0...length).to_a %>
+    <% for i in indexs do %>
+      <% if i%4==0 %>
+        <% if i!=0 %>
+          </tr>
+        <% end %>
+        <tr>
+        <td class='tbox'>
+            <div class='box'>
+            <%=image_tag(@phones[i].avatar_url(:large))%>
+             <%if @phones[i].intro.length<16%>
+	         <%=@phones[i].intro %>
+	         <%else%>
+	         <%=@phones[i].intro[0...16]+'...'%>
+	         <%end%>
+	         <div>
+	        <%= @phones[i].price %>
+            </div>
+            <div>
+             <%if @phones[i].review%>
+                 <%=link_to '查看评论',edit_review_path(@phones[i].review)%>
+             <%else%>
+                 <%session[:phone_id]=@phones[i].id%>
+                 <%=link_to '查看评论',new_review_path%>
+             <%end%>
+            </div>
+            </div>
+        </td>
+      <% else %>
+        <td class='tbox'>
+            <div class='box'>
+            <%=image_tag(@phones[i].avatar_url(:large))%>
+             <%if @phones[i].intro.length<16%>
+	         <%=@phones[i].intro %>
+	         <%else%>
+	         <%=@phones[i].intro[0...16]+'...'%>
+	         <%end%>
+	         <div>
+	        <%= @phones[i].price %>
+            </div>
+            <div>
+             <%if @phones[i].review%>
+                 <%=link_to '查看评论',edit_review_path(@phones[i].review)%>
+             <%else%>
+                 <%session[:phone_id]=@phones[i].id%>
+                 <%=link_to '查看评论',new_review_path%>
+             <%end%>            
+             </div>
+            </div>
+        </td>
+      <% end %>
+    <% end %>
+
+    
+  </tbody>
+</table>
+
+
+<p><%= link_to '返回我的订单', orders_path %></p>
